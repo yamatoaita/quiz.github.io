@@ -1,0 +1,54 @@
+body{
+    background-image: url('quiz_background.jpg'); /* 画像のパスを指定 */
+
+
+}
+
+.quiz_title{
+    position: relative;
+    bottom: 210px;
+    left: 450px;
+
+    width:500px;  
+}
+@media(max-width: 480px){
+    .quiz_title{
+        bottom: 0px;
+        left: 40px;
+    
+        width:300px;
+    }
+}
+.snake{
+    position: relative;
+    right: 0px;
+    top: 150px;
+
+    width:360px;
+
+}
+@media(max-width: 480px){
+    .snake{
+        top: 10px;
+        right: 0px;
+        left: 60px;
+        width:260px;
+    }
+}
+
+.quiz_start_btn{
+    position:relative;
+    right: 325px;
+    top: 350px;
+
+    width:300px;
+
+}
+@media(max-width: 480px){
+    .quiz_start_btn{
+        top: 80px;
+        left: 40px;
+    
+        width:300px;
+    }
+}

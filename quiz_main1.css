@@ -1,0 +1,456 @@
+* {
+
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+
+body{
+    background-image: url('quiz_background.jpg'); /* 画像のパスを指定 */
+    /*Flexboxを親オブジェクトに設定。子オブジェクトにおいて自由に位置関係を調整可能にする*/
+    width: 10px;
+    height: 50px;
+    margin: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    
+}
+@media(max-width: 480px){
+    html, body {
+        width: 10px;
+        height: 80px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+      }
+}
+
+#number_of_question{
+    position: relative;
+    top: 10px;
+    right: 50px;
+
+    -webkit-text-stroke-color: rgb(255, 0, 0);
+    -webkit-text-stroke-width: 3px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-size: 60px;
+
+    width: 500px;
+}
+@media(max-width: 480px){
+    #number_of_question{
+        position: fixed;
+        font-size: 50px;
+        left: 140px;
+        top: 30px;
+    }
+}
+
+#question_entry{
+    position: relative;
+    right: 350px;
+    top: 50px;
+    width: 800px;
+    height: 250px;
+
+}
+@media(max-width: 480px){
+    #question_entry{
+        position: fixed;
+        width: 300px;
+        height: 150px;
+        left: 50px;
+        top: 100px;
+    }
+}
+
+#question_contents{
+    position: relative;
+    bottom: 350px;
+    right: 120px;
+
+    font-size: 40px;
+    width: 500px;
+}
+@media(max-width: 480px){
+    #question_contents{
+        position: fixed;
+        left: 170px;
+        bottom: 460px;
+
+
+        font-size: 15px;
+        width: 170px;
+    }
+}
+
+#question_of_pic{
+    position: relative;
+    right: 330px;
+    bottom: 160px;
+    width: 180px;
+}
+@media(max-width: 480px){
+    #question_of_pic{
+        position: fixed;
+        left: 60px;
+        bottom: 445px;
+
+        width: 100px;
+    }
+}
+
+#btn1{
+
+    position: fixed;
+    right: 670px;
+    bottom: 200px;
+
+    width: 300px;
+    
+}
+@media(max-width: 480px){
+    #btn1{
+
+        left: 10px;
+        bottom: 260px;
+
+        height: 100px;
+        width: 180px;
+    }
+}
+#btn2{
+    position: fixed;
+    right: 670px;
+    bottom: 40px;
+
+    width: 300px;
+    
+}
+@media(max-width: 480px){
+    #btn2{
+        right: 184px;
+        top: 450px;
+
+        height: 100px;
+        width: 180px;
+    }
+}
+
+#btn3{
+    position: fixed;
+    
+    left: 760px;
+    bottom: 200px;
+
+    width: 300px;
+    
+}
+@media(max-width: 480px){
+    #btn3{
+        left: 195px;
+        bottom: 260px;
+
+        height: 100px;
+        width: 180px;
+    }
+}
+
+#btn4{
+    position: fixed;
+    left: 760px;
+    bottom: 40px;
+
+    width: 300px;
+    
+}
+@media(max-width: 480px){
+    #btn4{
+        left: 195px;
+        bottom: 117px;
+
+        height: 100px;
+        width: 180px;
+    }
+}
+
+#btn1_contents{
+    font-size: 25px;
+    width: 260px;
+    height: 90px;
+    text-align: center;
+
+
+    position: fixed;
+    right: 710px;
+    bottom: 240px;
+}
+@media(max-width: 480px){
+    #btn1_contents{
+        width: 160px;
+        height: 65px;
+        font-size: 15px;
+        
+        left: 15px;
+        bottom: 290px;
+    }
+
+}
+#btn2_contents{
+
+    font-size: 25px;
+    width: 260px;
+    height: 90px;
+    text-align: center;
+
+    position: fixed;
+    left: 775px;
+    bottom: 240px;
+}
+@media(max-width: 480px){
+    #btn2_contents{
+        font-size: 15px;
+
+        left: 200px;
+        bottom: 285px;
+        width: 160px;
+        height: 70px;
+    }
+}
+#btn3_contents{
+
+    font-size: 25px;
+
+    width: 260px;
+    height: 90px;
+    text-align: center;
+
+    position: fixed;
+    right: 700px;
+    bottom: 87px;
+}
+@media(max-width: 480px){
+    #btn3_contents{
+        font-size: 15px;
+
+        
+        height: 70px;
+        width: 155px;
+        left: 16px;
+        bottom: 140px;
+    }
+}
+#btn4_contents{
+
+    font-size: 25px;
+    width: 260px;
+    height: 90px;
+    text-align: center;
+
+    position: fixed;
+    left: 780px;
+    bottom: 87px;
+}
+@media(max-width: 480px){
+    #btn4_contents{
+        font-size: 15px;
+
+        height: 72px;
+        width: 155px;
+        left: 200px;
+        bottom: 140px;
+    }
+}
+
+#snake_pattern1{
+    width: 700px;
+    position: fixed;
+    right: 285px;
+    bottom: 5px;
+}
+@media(max-width: 480px){
+    #snake_pattern1{
+        width: 700px;
+
+        right: 0px;
+        bottom: 40px;
+    }
+}
+
+/*==============以下　答えのウェジット群===========*/
+#snake_answer{
+    width: 400px;
+
+    position: fixed;
+    left: 500px;
+    bottom: 0px;
+}
+@media(max-width: 480px){
+    #snake_answer{
+        width: 350px;
+        left: 20px;
+        bottom: 0px;
+    }
+}
+
+#quiz_answer_entry{
+    width: 400px;
+    
+    position: fixed;
+    right: 480px;
+    bottom: 200px;
+}
+@media(max-width: 480px){
+    #quiz_answer_entry{
+        width: 350px;
+        right: 10px;
+        bottom: 180px;
+    }
+}
+
+#quiz_answer_wrong{
+    width: 300px;
+    height: 30px;
+    font-size: 60px;
+    font-family:"HGP創英角ﾎﾟｯﾌﾟ体";
+    color:#12593b;
+    margin: 0px;
+    -webkit-text-stroke-color: rgb(38, 136, 97);
+    -webkit-text-stroke-width: 1px;
+    
+    text-shadow: 1px 1px 30px rgb(0, 208, 255);
+    color: rgb(255, 255, 255);
+    padding: 5px 5px 5px 60px;
+
+    position: fixed;
+    right: 520px;
+    bottom: 600px;    
+}
+@media(max-width: 480px){
+    #quiz_answer_wrong{
+        right: 30px;
+        bottom: 540px;
+    }
+}
+
+#quiz_answer_correct{
+    width: 300px;
+    height: 30px;
+    font-size: 60px;
+    font-family:"HGP創英角ﾎﾟｯﾌﾟ体";
+    color:#12593b;
+    margin: 0px;
+    -webkit-text-stroke-color: rgb(246, 140, 3);
+    -webkit-text-stroke-width: 1px;
+    
+    text-shadow: 1px 1px 30px rgb(9, 255, 0);
+    color: rgb(255, 255, 255);
+    padding: 5px 5px 5px 60px;
+
+    position: fixed;
+    right: 520px;
+    bottom: 600px;    
+}
+@media(max-width: 480px){
+    #quiz_answer_correct{
+        right: 30px;
+        bottom: 540px;
+    }
+}
+
+
+#quiz_answer_explain{
+    width: 400px;
+
+    position: fixed;
+    right: 460px;
+    bottom: 530px;
+
+    visibility: hidden;
+
+}
+@media(max-width: 480px){
+    #quiz_answer_explain{
+        width: 350px;
+        
+        right: 10px;
+        bottom: 500px;
+       
+    }
+}
+
+#snake_pattern2{
+    width: 600px;
+
+    position: fixed;
+    bottom: 660px;
+    right: 360px;
+}
+@media(max-width: 480px){
+    #snake_pattern2{
+        width: 820px;
+        right: 15px;
+        bottom: 600px;
+       
+    }
+}
+
+#answer_contents{
+    width: 360px;
+    height: 260px;
+    font-size: 25px;
+
+    text-align: left; /* 左揃え */
+  
+
+    position: fixed;
+    right: 500px;
+    bottom: 245px;
+}
+@media(max-width: 480px){
+    #answer_contents{
+        font-size: 22px;
+        width: 330px;
+        height: 230px;
+
+        right: 15px;
+        bottom:220px;
+    }
+}
+
+#middle_btn{
+    position: absolute;
+    left: 760px;
+    bottom: 110px;
+
+    width: 130px;
+    
+}
+@media(max-width: 480px){
+    #middle_btn{
+        position: fixed;
+        left: 220px;
+        bottom: 70px;
+    }
+}
+
+#middle_btn_contents{ 
+
+    position: absolute;
+    left: 770px;
+    bottom: 130px;
+    
+    font-size: 25px;
+   
+    text-align: center;
+    height: 50px;
+    width: 90px;
+}
+@media(max-width: 480px){
+    #middle_btn_contents{
+
+        position: fixed;
+        left: 230px;
+        bottom: 85px;
+    }
+}
