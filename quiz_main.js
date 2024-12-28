@@ -296,7 +296,7 @@ class DialogueSystem{
         //ここが開始時のみの記述
         //ボタンの表示設定
 
-        this.middle_btn.addEventListener("click",()=>{
+        this.middle_btn.addEventListener("touchstart",()=>{
             this.do();
         },{once:true});
         //ボタン１にイベント設定。
