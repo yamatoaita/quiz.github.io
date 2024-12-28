@@ -913,6 +913,7 @@ class SiteSystem{
 
 }
 
+alert("３回目");
 var system = new SiteSystem;
 
 
