@@ -17,10 +17,10 @@ body{
 }
 @media(max-width: 480px){
     html, body {
+
         width: 10px;
         height: 80px;
-        overflow-y: hidden;
-        overflow-x: hidden;
+
       }
 }
 
@@ -30,7 +30,7 @@ body{
     right: 50px;
 
     -webkit-text-stroke-color: rgb(255, 0, 0);
-    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-width: 2px;
     font-weight: bold;
     color: rgb(255, 255, 255);
     font-size: 60px;
@@ -39,10 +39,11 @@ body{
 }
 @media(max-width: 480px){
     #number_of_question{
+        width: 130px;
         position: fixed;
-        font-size: 50px;
-        left: 140px;
-        top: 30px;
+        font-size: 40px;
+        left: 40vw;
+        top: 5vh;
     }
 }
 
@@ -56,11 +57,14 @@ body{
 }
 @media(max-width: 480px){
     #question_entry{
-        position: fixed;
-        width: 300px;
-        height: 150px;
-        left: 50px;
+        height: 120px;
+        width: 290px;
+
+        position: relative;
+        font-size: 40px;
+        left: 60px;
         top: 100px;
+        background-color: red;
     }
 }
 
@@ -74,13 +78,12 @@ body{
 }
 @media(max-width: 480px){
     #question_contents{
-        position: fixed;
-        left: 170px;
-        bottom: 460px;
-
-
+        position: relative;
+        left: 165px;
+        bottom: 90px;
         font-size: 15px;
         width: 170px;
+        height: 100px;
     }
 }
 
@@ -92,11 +95,11 @@ body{
 }
 @media(max-width: 480px){
     #question_of_pic{
-        position: fixed;
-        left: 60px;
-        bottom: 445px;
+        position: relative;
+        left: 70px;
+        bottom: 0px;
 
-        width: 100px;
+        width: 90px;
     }
 }
 
@@ -112,11 +115,11 @@ body{
 @media(max-width: 480px){
     #btn1{
 
-        left: 10px;
-        bottom: 260px;
+        left: 40px;
+        bottom: 40vh;
 
         height: 100px;
-        width: 180px;
+        width: 150px;
     }
 }
 #btn2{
@@ -129,11 +132,11 @@ body{
 }
 @media(max-width: 480px){
     #btn2{
-        right: 184px;
-        top: 450px;
+        left: 40px;
+        bottom: 20vh;
 
         height: 100px;
-        width: 180px;
+        width: 150px;
     }
 }
 
@@ -149,10 +152,10 @@ body{
 @media(max-width: 480px){
     #btn3{
         left: 195px;
-        bottom: 260px;
+        bottom: 40vh;
 
         height: 100px;
-        width: 180px;
+        width: 150px;
     }
 }
 
@@ -167,10 +170,10 @@ body{
 @media(max-width: 480px){
     #btn4{
         left: 195px;
-        bottom: 117px;
+        bottom: 20vh;
 
         height: 100px;
-        width: 180px;
+        width: 150px;
     }
 }
 
@@ -187,12 +190,12 @@ body{
 }
 @media(max-width: 480px){
     #btn1_contents{
-        width: 160px;
+        width: 140px;
         height: 65px;
-        font-size: 15px;
-        
-        left: 15px;
-        bottom: 290px;
+        font-size: 13px;
+
+        left: 40px;
+        bottom: 43vh;
     }
 
 }
@@ -209,11 +212,11 @@ body{
 }
 @media(max-width: 480px){
     #btn2_contents{
-        font-size: 15px;
+        font-size: 13px;
 
         left: 200px;
-        bottom: 285px;
-        width: 160px;
+        bottom: 42vh;
+        width: 130px;
         height: 70px;
     }
 }
@@ -232,12 +235,11 @@ body{
 @media(max-width: 480px){
     #btn3_contents{
         font-size: 15px;
-
         
         height: 70px;
-        width: 155px;
-        left: 16px;
-        bottom: 140px;
+        width: 135px;
+        left: 40px;
+        bottom: 23vh;
     }
 }
 #btn4_contents{
@@ -253,12 +255,13 @@ body{
 }
 @media(max-width: 480px){
     #btn4_contents{
-        font-size: 15px;
+        font-size: 13px;
 
         height: 72px;
-        width: 155px;
+        width: 130px;
         left: 200px;
-        bottom: 140px;
+        bottom: 23vh;
+        
     }
 }
 
