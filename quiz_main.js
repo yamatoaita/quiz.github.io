@@ -893,5 +893,5 @@ class SiteSystem{
     }
 
 }
-alert("a");
+alert("ｂ");
 var system = new SiteSystem;
