@@ -344,7 +344,13 @@ class DialogueSystem{
             console.log(`============================It is %c<<TRANSLATE_COMMAND>>`,`color:blue`);
         };
 
-        var string_command_list = this.contents_of_speech.matchAll(/#([^#]+)#/g);
+        var regex = /#([^#]+)#/g;
+        var match;
+        var string_command_list = [];
+        while ((match = regex.exec(this.contents_of_speech)) !== null) {
+            string_command_list.push(match);
+        }
+        
         string_command_list.forEach(command =>{//コマンド式テンプレートリテラル法
             
             switch(command[1]){//ここに、処理するコマンドを書く
@@ -906,5 +912,27 @@ class SiteSystem{
     }
 
 }
-alert("SiteSystem入る前です");
+
 var system = new SiteSystem;
+
+
+/*
+エラー内容: string_command_list.forEach is not a function. (In 'string_command_list.forEach(command =>{//コマンド式テンプレートリテラル法
+            
+            switch(command[1]){//ここに、処理するコマンドを書く
+                case "command_correct_number":
+                    this.contents_of_speech = this.contents_of_speech.replace("#command_correct_number#",this.correct_number);
+                case "command_amount_of_question":
+                    this.contents_of_speech = this.contents_of_speech.replace("#command_amount_of_question#",this.amount_of_question);
+            }
+        })', 'string_command_list.forEach' is undefined)
+
+エラー位置: translate_command@https://yamatoaita.github.io/quiz.github.io/quiz_main.js:348:36
+load_dialogue@https://yamatoaita.github.io/quiz.github.io/quiz_main.js:332:31
+load_dialogue_4start@https://yamatoaita.github.io/quiz.github.io/quiz_main.js:294:31
+do@https://yamatoaita.github.io/quiz.github.io/quiz_main.js:126:42
+are_there_data@https://yamatoaita.github.io/quiz.github.io/quiz_main.js:278:16
+DialogueSystem@https://yamatoaita.github.io/quiz.github.io/quiz_main.js:53:28
+SiteSystem@https://yamatoaita.github.io/quiz.github.io/quiz_main.js:825:36
+global code@https://yamatoaita.github.io/quiz.github.io/quiz_main.js:910:14
+*/
