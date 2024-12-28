@@ -77,78 +77,80 @@ class DialogueSystem{
         console.table(variables);
         console.log(`>>>>>>>>>>>>>>>>>>>>>>>>>>>>%cthat is all`,`color:red`);
         */
-        
-        this.order = this.orders[this.order_index];
-        //命令書を取り出す
-        try{    
-            this.order_arg = this.order[1]; //引数を保存
+        try{
+            this.order = this.orders[this.order_index];
+            //命令書を取り出す
+            try{    
+                this.order_arg = this.order[1]; //引数を保存
+            }catch(error){
+                alert("[]と[]の間にコンマ忘れています！！！")
+            }
+                this.command = this.order[0];//命令を格納
+            
+            
+            //if条件　命令種別を分析
+            if(this.command == "next"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【NEXT】`,`color:green`);
+                };
+                this.next_dialogue();
+            }else if(this.command == "to_dialogue"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【TO_DIALOGUE】`,`color:green`);
+                };
+                this.to_dialogue();
+            }else if(this.command == "to_order"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【TO_ORDER】`,`color:green`);
+                };
+                this.to_order();
+            }else if(this.command == "check_<change_d&s_index>"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【CHECK_CHANGE_DS_INDEX】`,`color:green`);
+                };
+                this.check_change_ds_index();
+            }else if(this.command == "change_d&s_pack"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【CHANGE_DS_PACK】`,`color:green`);
+                };
+                this.change_ds_pack();
+            }else if(this.command == "link"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【LINK】`,`color:green`);
+                };
+                this.link();
+            }else if(this.command == "load"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【LOAD_DIALOGUE_4START】`,`color:green`);
+                };
+                this.load_dialogue_4start();
+            }else if(this.command == "next_question"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【NEXT_QUESTION】`,`color:green`);
+                };
+                this.next_question();
+            }else if(this.command == "answer"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【ANSWER】`,`color:green`);
+                };
+                this.answer();
+            }else if(this.command == "end"){
+                if(this.do_consoleflg){
+                    console.log(`in%c【END】`,`color:green`);
+                };
+                this.end();
+            }
+            else{
+                alert("it is out of command. orderboxの書き方に異常があります。");
+            }// end of if
+
+
+            
+
+            this.show_log_4debug();//デバッグ用のconsole.log表示
         }catch(error){
-            alert("[]と[]の間にコンマ忘れています！！！")
+            alert(`エラー内容: ${error.message}\nエラー位置: ${error.stack}`);
         }
-            this.command = this.order[0];//命令を格納
-           
-        
-        //if条件　命令種別を分析
-        if(this.command == "next"){
-            if(this.do_consoleflg){
-                console.log(`in%c【NEXT】`,`color:green`);
-            };
-            this.next_dialogue();
-        }else if(this.command == "to_dialogue"){
-            if(this.do_consoleflg){
-                console.log(`in%c【TO_DIALOGUE】`,`color:green`);
-            };
-            this.to_dialogue();
-        }else if(this.command == "to_order"){
-            if(this.do_consoleflg){
-                console.log(`in%c【TO_ORDER】`,`color:green`);
-            };
-            this.to_order();
-        }else if(this.command == "check_<change_d&s_index>"){
-            if(this.do_consoleflg){
-                console.log(`in%c【CHECK_CHANGE_DS_INDEX】`,`color:green`);
-            };
-            this.check_change_ds_index();
-        }else if(this.command == "change_d&s_pack"){
-            if(this.do_consoleflg){
-                console.log(`in%c【CHANGE_DS_PACK】`,`color:green`);
-            };
-            this.change_ds_pack();
-        }else if(this.command == "link"){
-            if(this.do_consoleflg){
-                console.log(`in%c【LINK】`,`color:green`);
-            };
-            this.link();
-        }else if(this.command == "load"){
-            if(this.do_consoleflg){
-                console.log(`in%c【LOAD_DIALOGUE_4START】`,`color:green`);
-            };
-            this.load_dialogue_4start();
-        }else if(this.command == "next_question"){
-            if(this.do_consoleflg){
-                console.log(`in%c【NEXT_QUESTION】`,`color:green`);
-            };
-            this.next_question();
-        }else if(this.command == "answer"){
-            if(this.do_consoleflg){
-                console.log(`in%c【ANSWER】`,`color:green`);
-            };
-            this.answer();
-        }else if(this.command == "end"){
-            if(this.do_consoleflg){
-                console.log(`in%c【END】`,`color:green`);
-            };
-            this.end();
-        }
-        else{
-            alert("it is out of command. orderboxの書き方に異常があります。");
-        }// end of if
-
-
-        
-
-        this.show_log_4debug();//デバッグ用のconsole.log表示
-        
     }
 
     show_log_4debug(){//console.logに表示させるための機能
@@ -278,37 +280,40 @@ class DialogueSystem{
     }
 
     load_dialogue_4start(){
-        if(this.innerfunc_consoleflg){
-            console.log(`============================It is %c<<LOAD_DIALOGUE_4START>>`,`color:blue`);
-        };
+        try{
+            if(this.innerfunc_consoleflg){
+                console.log(`============================It is %c<<LOAD_DIALOGUE_4START>>`,`color:blue`);
+            };
 
-        this.answer_explain.style.visibility = "visible";
-        this.answer_correct.style.visibility = "hidden";
-        this.answer_wrong.style.visibility = "hidden";
-        //答えセット　タイトル画像を【説明用】に変える
+            this.answer_explain.style.visibility = "visible";
+            this.answer_correct.style.visibility = "hidden";
+            this.answer_wrong.style.visibility = "hidden";
+            //答えセット　タイトル画像を【説明用】に変える
 
-        //会話パックの最初のログを読み込むための関数。
-        this.load_dialogue();
-        //ログを読み込む
+            //会話パックの最初のログを読み込むための関数。
+            this.load_dialogue();
+            //ログを読み込む
 
-        this.middle_btn.textContent = "次へ";
-       
-        //ここが開始時のみの記述
-        //ボタンの表示設定
+            this.middle_btn.textContent = "次へ";
+        
+            //ここが開始時のみの記述
+            //ボタンの表示設定
 
-        this.middle_btn.addEventListener("touchstart",()=>{
-            this.do();
-        },{once:true});
-        //ボタン１にイベント設定。
+            this.middle_btn.addEventListener("click",()=>{
+                this.do();
+            },{once:true});
+            //ボタン１にイベント設定。
 
 
-        this.dialogue_index += 1;
-        //会話インデックスを更新分、１つ増加
-        this.order_index += 1;
-        this.order_changed_flg = 1;
-        //命令を終えたため、命令インデックスを一つ増加
-
-  
+            this.dialogue_index += 1;
+            //会話インデックスを更新分、１つ増加
+            this.order_index += 1;
+            this.order_changed_flg = 1;
+            //命令を終えたため、命令インデックスを一つ増加
+        }catch(error){
+            alert(`エラー内容: ${error.message}\nエラー位置: ${error.stack}`);
+        }
+    
 
     }
 
@@ -556,204 +561,212 @@ class DialogueSystem{
     }
     
     next_question(){
-        if(this.innerfunc_consoleflg){
-            console.log(`============================It is %c<<NEXT_QUESTION>>`,`color:blue`);
-        };
-
-        //["next_question", 問題文,[btn1の内容,TF_ind], [btn2の内容,TF_ind], [btn3の内容,TF_ind],[btn4の内容, TF_ind]]
-        //(TF_indには0:False, 1:Trueを入れて下さい。2を入れるとbtnイベントを無効化します)
-        for (var i = 0; i < this.question_items.length; i++) {
-            this.question_items[i].style.visibility = "visible";
-        }
-        for (var i = 0; i < this.answer_items.length; i++) {
-            this.answer_items[i].style.visibility = "hidden";
-        }
-        //画面切り替え
-
-        //this.order_arg = 問題文
-        var second_order_arg = this.order[2]; 
-        var third_order_arg = this.order[3];
-        var fourth_order_arg = this.order[4];
-        var fifth_order_arg = this.order[5];
-
-        var btn1_content = second_order_arg[0]; //btn1の内容
-        var btn1_tf = second_order_arg[1];//btn1の正誤
-
-        var btn2_content =  third_order_arg[0]; //btn2の内容
-        var btn2_tf = third_order_arg[1];//btn2の正誤
-        
         try{
-            var btn3_content =  fourth_order_arg[0]; //btn3の内容
-            var btn3_tf = fourth_order_arg[1];//btn3の正誤
+            if(this.innerfunc_consoleflg){
+                console.log(`============================It is %c<<NEXT_QUESTION>>`,`color:blue`);
+            };
 
-            var btn4_content =  fifth_order_arg[0]; //btn4の内容
-            var btn4_tf = fifth_order_arg[1];//btn4の正誤
-        }catch(error){
-            alert("使わないボタンに[^^^^,2]やってないよ！！ ");
-        }
+            //["next_question", 問題文,[btn1の内容,TF_ind], [btn2の内容,TF_ind], [btn3の内容,TF_ind],[btn4の内容, TF_ind]]
+            //(TF_indには0:False, 1:Trueを入れて下さい。2を入れるとbtnイベントを無効化します)
+            for (var i = 0; i < this.question_items.length; i++) {
+                this.question_items[i].style.visibility = "visible";
+            }
+            for (var i = 0; i < this.answer_items.length; i++) {
+                this.answer_items[i].style.visibility = "hidden";
+            }
+            //画面切り替え
 
-        var btn_contents = [btn1_content,btn2_content,btn3_content,btn4_content];
-        console.table(btn_contents);
-        var i = 0;
-        for(let item of btn_contents){
-            let strlength = item.length;
-            let num_of_br = 0;
+            //this.order_arg = 問題文
+            var second_order_arg = this.order[2]; 
+            var third_order_arg = this.order[3];
+            var fourth_order_arg = this.order[4];
+            var fifth_order_arg = this.order[5];
+
+            var btn1_content = second_order_arg[0]; //btn1の内容
+            var btn1_tf = second_order_arg[1];//btn1の正誤
+
+            var btn2_content =  third_order_arg[0]; //btn2の内容
+            var btn2_tf = third_order_arg[1];//btn2の正誤
+            
             try{
-                num_of_br = item.match(/<br>/g).length;
-                num_of_br = num_of_br ? num_of_br:0; // 3項演算　【条件式 ? TRUE : FALSE;】(matchしなかった場合に備える)
+                var btn3_content =  fourth_order_arg[0]; //btn3の内容
+                var btn3_tf = fourth_order_arg[1];//btn3の正誤
+
+                var btn4_content =  fifth_order_arg[0]; //btn4の内容
+                var btn4_tf = fifth_order_arg[1];//btn4の正誤
             }catch(error){
-                num_of_br = 0;
-            }
-                let newlines = Math.floor(strlength/8) + num_of_br;
-
-            console.log(newlines);
-            switch(newlines){
-                case 0:
-                    btn_contents[i] = "<br>" + btn_contents[i];
-                    break;
-                case 1:
-                    btn_contents[i] = "<br>" + btn_contents[i];
-                    break;
-                
+                alert("使わないボタンに[^^^^,2]やってないよ！！ ");
             }
 
-            i += 1;
-        };
+            var btn_contents = [btn1_content,btn2_content,btn3_content,btn4_content];
+            console.table(btn_contents);
+            var i = 0;
+            for(let item of btn_contents){
+                let strlength = item.length;
+                let num_of_br = 0;
+                try{
+                    num_of_br = item.match(/<br>/g).length;
+                    num_of_br = num_of_br ? num_of_br:0; // 3項演算　【条件式 ? TRUE : FALSE;】(matchしなかった場合に備える)
+                }catch(error){
+                    num_of_br = 0;
+                }
+                    let newlines = Math.floor(strlength/8) + num_of_br;
+
+                console.log(newlines);
+                switch(newlines){
+                    case 0:
+                        btn_contents[i] = "<br>" + btn_contents[i];
+                        break;
+                    case 1:
+                        btn_contents[i] = "<br>" + btn_contents[i];
+                        break;
+                    
+                }
+
+                i += 1;
+            };
+            
+
+            this.btn1.innerHTML = btn_contents[0];
+            this.btn2.innerHTML = btn_contents[1];
+            this.btn3.innerHTML = btn_contents[2];
+            this.btn4.innerHTML = btn_contents[3];
+            this.speech_question.innerHTML = this.order_arg;
+            this.number_of_question.innerHTML = `第${this.num_of_current_que}問`;
+            //文字の表示
+
+            var flg_trigger = this.num_of_current_que+1;//現在の問題でなければ、btnイベントを無効化する。
+            if(btn1_tf < 2){
+                this.btn1.addEventListener("click",()=>{
+                    if(this.num_of_current_que == flg_trigger){
+                        this.user_answer = btn1_tf;
+                        this.do();
+                    }
+                },{once:true});
+            }
+            
+            if(btn2_tf < 2){
+                this.btn2.addEventListener("click",()=>{
+
+                    if(this.num_of_current_que == flg_trigger){
+                        this.user_answer = btn2_tf;
+                        this.do();
+                    }
+                },{once:true});
+            }
+
+            if(btn3_tf < 2){
+                this.btn3.addEventListener("click",()=>{
         
+                    if(this.num_of_current_que == flg_trigger){
+                        this.user_answer = btn3_tf;
+                        this.do();
+                    }
+                },{once:true});
+            }
 
-        this.btn1.innerHTML = btn_contents[0];
-        this.btn2.innerHTML = btn_contents[1];
-        this.btn3.innerHTML = btn_contents[2];
-        this.btn4.innerHTML = btn_contents[3];
-        this.speech_question.innerHTML = this.order_arg;
-        this.number_of_question.innerHTML = `第${this.num_of_current_que}問`;
-        //文字の表示
+            if(btn4_tf < 2){
+                this.btn4.addEventListener("click",()=>{
+                    if(this.num_of_current_que == flg_trigger){
+                        this.user_answer = btn4_tf;
+                        this.do();
+                    }
+                },{once:true});
+            }
 
-        var flg_trigger = this.num_of_current_que+1;//現在の問題でなければ、btnイベントを無効化する。
-        if(btn1_tf < 2){
-            this.btn1.addEventListener("click",()=>{
-                if(this.num_of_current_que == flg_trigger){
-                    this.user_answer = btn1_tf;
-                    this.do();
-                }
-            },{once:true});
-        }
+            for (var i = 0; i < this.question_items.length; i++) {
+                this.question_items[i].style.visibility = "visible";
+            }
+            for (var i = 0; i < this.answer_items.length; i++) {
+                this.answer_items[i].style.visibility = "hidden";
+            }
+            //画面切り替え
         
-        if(btn2_tf < 2){
-            this.btn2.addEventListener("click",()=>{
+            this.amount_of_question += 1;
 
-                if(this.num_of_current_que == flg_trigger){
-                    this.user_answer = btn2_tf;
-                    this.do();
-                }
-            },{once:true});
+            this.num_of_current_que += 1;
+            
+            this.order_index += 1;
+            this.order_changed_flg = 2;
+            //命令を一つ終えたため、命令インデックスを１つ増加
+        }catch(error){
+            alert(`エラー内容: ${error.message}\nエラー位置: ${error.stack}`);
         }
-
-        if(btn3_tf < 2){
-            this.btn3.addEventListener("click",()=>{
-       
-                if(this.num_of_current_que == flg_trigger){
-                    this.user_answer = btn3_tf;
-                    this.do();
-                }
-            },{once:true});
-        }
-
-        if(btn4_tf < 2){
-            this.btn4.addEventListener("click",()=>{
-                if(this.num_of_current_que == flg_trigger){
-                    this.user_answer = btn4_tf;
-                    this.do();
-                }
-            },{once:true});
-        }
-
-        for (var i = 0; i < this.question_items.length; i++) {
-            this.question_items[i].style.visibility = "visible";
-        }
-        for (var i = 0; i < this.answer_items.length; i++) {
-            this.answer_items[i].style.visibility = "hidden";
-        }
-        //画面切り替え
-       
-        this.amount_of_question += 1;
-
-        this.num_of_current_que += 1;
-        
-        this.order_index += 1;
-        this.order_changed_flg = 2;
-        //命令を一つ終えたため、命令インデックスを１つ増加
     }
 
     answer(){
-        if(this.innerfunc_consoleflg){
-            console.log(`============================It is %c<<ANSWER>>`,`color:blue`);
-        };
-        // ["answer",解説文]
-        for (var i = 0; i < this.question_items.length; i++) {
-            this.question_items[i].style.visibility = "hidden";
-        }
-        for (var i = 0; i < this.answer_items.length; i++) {
-            this.answer_items[i].style.visibility = "visible";
-        }
-        //画面切り替え
 
-        this.answer_explain.style.visibility = "hidden";
+        try{
+            if(this.innerfunc_consoleflg){
+                console.log(`============================It is %c<<ANSWER>>`,`color:blue`);
+            };
+            // ["answer",解説文]
+            for (var i = 0; i < this.question_items.length; i++) {
+                this.question_items[i].style.visibility = "hidden";
+            }
+            for (var i = 0; i < this.answer_items.length; i++) {
+                this.answer_items[i].style.visibility = "visible";
+            }
+            //画面切り替え
 
-        if(this.user_answer == 1){
-           
-            this.answer_correct.style.visibility = "visible";
-            this.answer_wrong.style.visibility = "hidden";
-            //答えセット　タイトル画像を【正解】に変える
+            this.answer_explain.style.visibility = "hidden";
 
-            this.correct_number += 1;
-        }else if(this.user_answer == 0){
-            this.answer_correct.style.visibility = "hidden";
-            this.answer_wrong.style.visibility = "visible";
-            //答えセット　タイトル画像を【不正解】に変える
-        }
+            if(this.user_answer == 1){
+            
+                this.answer_correct.style.visibility = "visible";
+                this.answer_wrong.style.visibility = "hidden";
+                //答えセット　タイトル画像を【正解】に変える
 
-        //＝＝＝＝＝＝＝＝＝＝＝＝行数調整＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-        //横max：全角１３文字 縦max：７行
-        var contents_length = this.order_arg.length;
-        var number_of_br = this.order_arg.match(/<br>/g).length;
-       
-        number_of_br = number_of_br ? number_of_br:0; // 3項演算　【条件式 ? TRUE : FALSE;】(matchしなかった場合に備える)
+                this.correct_number += 1;
+            }else if(this.user_answer == 0){
+                this.answer_correct.style.visibility = "hidden";
+                this.answer_wrong.style.visibility = "visible";
+                //答えセット　タイトル画像を【不正解】に変える
+            }
 
-        var newlines = Math.floor(contents_length/13) + number_of_br; // 行数を調べる
+            //＝＝＝＝＝＝＝＝＝＝＝＝行数調整＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+            //横max：全角１３文字 縦max：７行
+            var contents_length = this.order_arg.length;
+            var number_of_br = this.order_arg.match(/<br>/g).length;
         
-        switch(newlines){
-            case 1:
-                this.order_arg = "<br><br><br><br>" + this.order_arg;
-                break;
-            case 2:
-                this.order_arg = "<br><br><br>" + this.order_arg;
-                break;
-            case 3:
-                this.order_arg = "<br><br>" + this.order_arg;
-                break;
-            case 4:
-                this.order_arg = "<br>" + this.order_arg;
-                break;
-            case 5:
-                this.order_arg = "<br>" + this.order_arg;
-                break;
-            case 6:
-                this.order_arg = "<br>" + this.order_arg;
-                break;
+            number_of_br = number_of_br ? number_of_br:0; // 3項演算　【条件式 ? TRUE : FALSE;】(matchしなかった場合に備える)
+
+            var newlines = Math.floor(contents_length/13) + number_of_br; // 行数を調べる
+            
+            switch(newlines){
+                case 1:
+                    this.order_arg = "<br><br><br><br>" + this.order_arg;
+                    break;
+                case 2:
+                    this.order_arg = "<br><br><br>" + this.order_arg;
+                    break;
+                case 3:
+                    this.order_arg = "<br><br>" + this.order_arg;
+                    break;
+                case 4:
+                    this.order_arg = "<br>" + this.order_arg;
+                    break;
+                case 5:
+                    this.order_arg = "<br>" + this.order_arg;
+                    break;
+                case 6:
+                    this.order_arg = "<br>" + this.order_arg;
+                    break;
+            }
+            //===================THAT'S ALL========================================================================
+
+            this.speech_answer.innerHTML = this.order_arg;
+
+            this.middle_btn.addEventListener("click",()=>{
+                this.do();
+            },{once:true})
+
+            this.order_index += 1;
+            this.order_changed_flg = 2;
+            //命令を一つ終えたため、命令インデックスを１つ増加
+        }catch(error){
+            alert(`エラー内容: ${error.message}\nエラー位置: ${error.stack}`);
         }
-        //===================THAT'S ALL========================================================================
-
-        this.speech_answer.innerHTML = this.order_arg;
-
-        this.middle_btn.addEventListener("click",()=>{
-            this.do();
-        },{once:true})
-
-        this.order_index += 1;
-        this.order_changed_flg = 2;
-        //命令を一つ終えたため、命令インデックスを１つ増加
-
     }
 
     end(){
@@ -893,5 +906,5 @@ class SiteSystem{
     }
 
 }
-alert("ｂ");
+alert("SiteSystem入る前です");
 var system = new SiteSystem;
