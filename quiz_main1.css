@@ -39,7 +39,7 @@ body{
 }
 @media(max-width: 480px){
     #number_of_question{
-        width: 130px;
+        width: 135px;
         position: fixed;
         font-size: 40px;
         left: 40vw;
@@ -50,7 +50,7 @@ body{
 #question_entry{
     position: relative;
     right: 350px;
-    top: 50px;
+    top: 10px;
     width: 800px;
     height: 250px;
 
@@ -64,13 +64,13 @@ body{
         font-size: 40px;
         left: 60px;
         top: 100px;
-        background-color: red;
+
     }
 }
 
 #question_contents{
     position: relative;
-    bottom: 350px;
+    bottom: 370px;
     right: 120px;
 
     font-size: 40px;
@@ -80,7 +80,7 @@ body{
     #question_contents{
         position: relative;
         left: 165px;
-        bottom: 90px;
+        bottom: 100px;
         font-size: 15px;
         width: 170px;
         height: 100px;
@@ -89,17 +89,17 @@ body{
 
 #question_of_pic{
     position: relative;
-    right: 330px;
-    bottom: 160px;
-    width: 180px;
+    right: 370px;
+    bottom: 200px;
+    width: 250px;
 }
 @media(max-width: 480px){
     #question_of_pic{
         position: relative;
-        left: 70px;
-        bottom: 0px;
+        left: 40px;
+        bottom: 10px;
 
-        width: 90px;
+        width: 140px;
     }
 }
 
@@ -281,12 +281,27 @@ body{
 }
 
 /*==============以下　答えのウェジット群===========*/
+
+:root{
+    --snake_answer_btm:0px;
+    --quiz_answer_entry_btm:200px;
+    --quiz_answer_wrong_btm:600px;
+    --quiz_answer_correct_btm:600px;
+    --quiz_answer_explain_btm:530px;
+    --snake_pattern2:660px;
+    --answer_contents:245px;
+    --middle_btn:110px;
+    --middle_btn_contents:130px;
+}
+
+
+
 #snake_answer{
     width: 400px;
 
     position: fixed;
     left: 500px;
-    bottom: 0px;
+    bottom: var(--snake_answer_btm);
 }
 @media(max-width: 480px){
     #snake_answer{
@@ -301,7 +316,7 @@ body{
     
     position: fixed;
     right: 480px;
-    bottom: 200px;
+    bottom: var(--quiz_answer_entry_btm);
 }
 @media(max-width: 480px){
     #quiz_answer_entry{
@@ -327,7 +342,7 @@ body{
 
     position: fixed;
     right: 520px;
-    bottom: 600px;    
+    bottom: var(--quiz_answer_wrong_btm);    
 }
 @media(max-width: 480px){
     #quiz_answer_wrong{
@@ -340,19 +355,19 @@ body{
     width: 300px;
     height: 30px;
     font-size: 60px;
-    font-family:"HGP創英角ﾎﾟｯﾌﾟ体";
-    color:#12593b;
+    font-family:"HGP創英角ﾎﾟｯﾌﾟ体";/*フォントの設定*/
+
     margin: 0px;
-    -webkit-text-stroke-color: rgb(246, 140, 3);
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(246, 140, 3);/*縁の色の設定*/
+    -webkit-text-stroke-width: 1px;/*縁の太さ*/
     
-    text-shadow: 1px 1px 30px rgb(9, 255, 0);
-    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 30px rgb(9, 255, 0);/*ぼかしの色*/
+    color: rgb(255, 255, 255);/*文字の中の色*/
     padding: 5px 5px 5px 60px;
 
     position: fixed;
     right: 520px;
-    bottom: 600px;    
+    bottom: var(--quiz_answer_correct_btm);    
 }
 @media(max-width: 480px){
     #quiz_answer_correct{
@@ -367,7 +382,7 @@ body{
 
     position: fixed;
     right: 460px;
-    bottom: 530px;
+    bottom: var(--quiz_answer_explain_btm);
 
     visibility: hidden;
 
@@ -386,7 +401,7 @@ body{
     width: 600px;
 
     position: fixed;
-    bottom: 660px;
+    bottom: var(--snake_pattern2);
     right: 360px;
 }
 @media(max-width: 480px){
@@ -408,7 +423,7 @@ body{
 
     position: fixed;
     right: 500px;
-    bottom: 245px;
+    bottom: var(--answer_contents);
 }
 @media(max-width: 480px){
     #answer_contents{
@@ -424,7 +439,7 @@ body{
 #middle_btn{
     position: absolute;
     left: 760px;
-    bottom: 110px;
+    bottom: var(--middle_btn);
 
     width: 130px;
     
@@ -441,7 +456,7 @@ body{
 
     position: absolute;
     left: 770px;
-    bottom: 130px;
+    bottom: var(--middle_btn_contents);
     
     font-size: 25px;
    
