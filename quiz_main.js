@@ -779,7 +779,7 @@ class DialogueSystem{
 
         this.middle_btn.innerHTML = "戻る";
         this.middle_btn.addEventListener("click",()=>{
-            window.location.href = this.order_arg;
+            window.location.href = "https://yamatoaita.github.io/hp.github.io/";
         });
 
         this.load_dialogue();
